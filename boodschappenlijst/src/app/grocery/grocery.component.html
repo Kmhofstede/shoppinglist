@@ -1,27 +1,33 @@
 
-<div style="justify-content:center">
-    <div class="row">
-    <h2>Boodschappen doen </h2>
-</div>
-    <div class="row" >
-        <div class="col-xs-6 col-md-4" style="justify-content:center">
+<div class="col-12" >
+    <div class="row" style="justify-content: center">
+        <h2>Boodschappen doen </h2>
+    </div>
+    <div class="row" style="justify-content: center" >
+        <div class="col-xs-12 col-md-6" style="justify-content:center">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="enter grocery items" id="txtSearch" [(ngModel)]="task" />
+                <input type="text" class="form-control" placeholder="enter grocery items" id="txtSearch" [(ngModel)]="task.name" />
+                <input type="number" class="form-control" placeholder="enter amount" id="txtSearch" [(ngModel)]="task.amount" />
                 <div class="input-group-btn">
-                    <button class="btn btn-primary" type="button" (click)="onClick()">
+                    <button class="btn btn-primary" type="button" (click)="onAdd()">
                         <span class="glyphicon glyphicon-ok">Voeg toe</span>
                      </button>
                 </div>
             </div>
         </div>
-        <span>
-            {{tasks | json}}
-        </span>
     </div>
-    <ul class="list-group">
-        <li *ngFor="let task of tasks" class="list-group-item">
-            <span> {{ task.name }} </span>
+    <br>
+    <div class="row">
+    <ul class="list-group col-xs-6 col-md-5">
+        <li *ngFor="let task of tasks"  class="list-group-item ">
+            <div class="row" style="justify-content: center;">
+            <span class="col-4" style="justify-content:center" [ngClass]="{'strike': task.strike}" > {{ task.name }} {{task.amount}} </span>
+            <button class=" col-2 btn btn-danger" type="button" (click)=onRemove(task)>Verwijder</button>
+            <button style="margin-left: 15px;"class=" col-2 btn btn-warning" type="button" (click)=onEdit(task)>Bewerk</button>
+            <button style="margin-left: 15px;"class=" col-2 btn btn-success" type="button" (click)=onCheck(task)>Vink af</button>
+        </div> 
         </li>
     </ul>
+    </div>
 </div>
 
